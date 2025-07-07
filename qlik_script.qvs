@@ -1,0 +1,125 @@
+///$tab Main
+/*
+===========================================
+QLIK SENSE SCRIPT - TEST APPLICATION
+===========================================
+
+Dit script is ge-unbuild vanuit de Qlik Cloud applicatie 'test' 
+en bevat de data loading en transformatie logica.
+
+Auteur: AliceLynxx
+Datum: $(date())
+Versie: 1.0
+
+===========================================
+SCRIPT DOCUMENTATIE
+===========================================
+
+Dit script bevat de volgende secties:
+1. Variabelen en configuratie
+2. Data loading
+3. Data transformatie
+4. Kalender generatie (indien van toepassing)
+5. Data kwaliteit controles
+
+===========================================
+*/
+
+// Variabelen instellen
+SET ThousandSep='.';
+SET DecimalSep=',';
+SET MoneyThousandSep='.';
+SET MoneyDecimalSep=',';
+SET MoneyFormat='€ #.##0,00;-€ #.##0,00';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='D-M-YYYY';
+SET TimestampFormat='D-M-YYYY h:mm:ss[.fff] TT';
+SET FirstWeekDay=0;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='nl-NL';
+SET CreateSearchIndexOnReload=1;
+SET MonthNames='jan;feb;mrt;apr;mei;jun;jul;aug;sep;okt;nov;dec';
+SET LongMonthNames='januari;februari;maart;april;mei;juni;juli;augustus;september;oktober;november;december';
+SET DayNames='ma;di;wo;do;vr;za;zo';
+SET LongDayNames='maandag;dinsdag;woensdag;donderdag;vrijdag;zaterdag;zondag';
+SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
+
+/*
+===========================================
+DATA LOADING SECTIE
+===========================================
+
+Hier worden de data bronnen geladen.
+Pas de onderstaande secties aan naar je specifieke data bronnen.
+*/
+
+// Voorbeeld data loading - vervang met je eigen data bronnen
+// LOAD * FROM [lib://DataConnection/data.xlsx] (ooxml, embedded labels, table is Sheet1);
+
+/*
+===========================================
+DATA TRANSFORMATIE SECTIE
+===========================================
+
+Hier worden data transformaties uitgevoerd zoals:
+- Data cleaning
+- Berekende velden
+- Aggregaties
+- Joins tussen tabellen
+*/
+
+// Voorbeeld transformatie
+// RESIDENT TransformTable;
+
+/*
+===========================================
+KALENDER TABEL (OPTIONEEL)
+===========================================
+
+Standaard kalender tabel voor tijd-gebaseerde analyses
+*/
+
+// Uncomment onderstaande code voor kalender functionaliteit
+/*
+Calendar:
+LOAD
+    Date,
+    Year(Date) as Year,
+    Month(Date) as Month,
+    Day(Date) as Day,
+    WeekDay(Date) as WeekDay,
+    Week(Date) as Week,
+    'Q' & Ceil(Month(Date)/3) as Quarter
+;
+LOAD
+    Date(MinDate + IterNo() - 1) as Date
+WHILE
+    MinDate + IterNo() - 1 <= MaxDate
+;
+LOAD
+    Min(DateField) as MinDate,
+    Max(DateField) as MaxDate
+RESIDENT YourDataTable;
+*/
+
+/*
+===========================================
+DATA KWALITEIT CONTROLES
+===========================================
+
+Voeg hier controles toe voor data kwaliteit
+*/
+
+// Voorbeeld: Tel aantal records per tabel
+// TRACE Aantal records in hoofdtabel: $(NoOfRows('YourMainTable'));
+
+/*
+===========================================
+SCRIPT EINDE
+===========================================
+
+Script voltooid. Controleer de data model viewer
+voor de uiteindelijke data structuur.
+*/
