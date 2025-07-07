@@ -1,0 +1,19 @@
+// Passenger count v3 - Qlik Script
+// This script was extracted from Qlik Cloud application 'Passenger count v3'
+// Application ID: 6824567dcb27cb24cbe1cfb5
+// Last reload: 2025-07-02T09:29:19.107Z
+
+// Note: The original script.qvs file was empty in the unbuilt application
+// This suggests the data loading might be handled through other means
+// or the script content was not preserved during the unbuild process
+
+// Variables defined in the application:
+// - RouteColor: Color mapping for different routes
+// - vDataLoadTimestamp: Data load timestamp (02-07-2025)
+// - vToday: Current date formula
+// - vDifference: Time difference calculation
+// - vMinDate, vMaxDate: Date range variables
+// - vRawData: Raw data flag
+
+// The application contains multiple data layers and visualizations for passenger count analysis
+// including boarding/alighting statistics, route analysis, and occupancy metrics
